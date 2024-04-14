@@ -58,17 +58,17 @@ An important test case for this program is the solar system. The initial conditi
 
 ### Iteration 1
 
-- [] Correctly parse input file
-- [] Correctly format output
-- [] Handle errors gracefully
-- [] Meet basic simulation precision requirements
+- [ ] Correctly parse input file
+- [ ] Correctly format output
+- [ ] Handle errors gracefully
+- [ ] Meet basic simulation precision requirements
 
 ### Iteration 2
 
-- [] Meet advanced simulation precision requirements
-- [] Implement visualization
+- [ ] Meet advanced simulation precision requirements
+- [ ] Implement visualization
 
 ### Iteration 3
 
-- [] Implement 3d visualization
-- [] Allow the user to interactively edit the system
+- [ ] Implement 3d visualization
+- [ ] Allow the user to interactively edit the system
