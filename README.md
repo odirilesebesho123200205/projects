@@ -20,6 +20,10 @@ All past reviews are made available to the reviewer, so they can comment on the 
 
 Students should be able to complete projects multiple times, in the style of a code kata.
 
+### Specification Optional
+
+Narrowing the specification of a project should always be optional for the author, as should automating a particular aspect of the project's review. Peer reviews and trusted reviews should still add a layer of rigour to the project. Ideally, we are able to set two or three completely open-ended projects for students to develop publically on their GitHub. This should be a core learning outcome.
+
 ## Todo
 
 - [ ] Explore the addition of code katas
