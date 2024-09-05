@@ -6,6 +6,11 @@ if [ -e prepare.sh ]; then
     ./prepare.sh
 fi
 
+if [ ! -e number_representations.py ]; then
+    echo "number_representations.py was not found"
+    exit 1
+fi
+
 python3 -m pytest ./_tests.py
 
 # TODO: Put review into schema
