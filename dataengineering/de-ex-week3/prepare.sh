@@ -4,15 +4,15 @@ echo "Removing old output files in dir $1"
 
 file1="local_sqlite_database.db"
 
-if [ -f "$file" ]; then
-    echo "File $file exists. Deleting..."
-    rm "$file"
+if [ -f "$file1" ]; then
+    echo "File $file1 exists. Deleting..."
+    rm "$file1"
     if [ $? -eq 0 ]; then
-        echo "File $file has been successfully deleted."
+        echo "File $file1 has been successfully deleted."
     else
-        echo "Failed to delete $file."
+        echo "Failed to delete $file1."
     fi
 else
-    echo "File $file does not exist."
+    echo "File $file1 does not exist."
 fi
 
