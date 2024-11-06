@@ -23,7 +23,6 @@ sqlite3 "$file1" .dump > "submit.dump"
 # Compare the files
 if diff "submit.dump" "solution.dump"; then
     echo "The databases contain the same data."
-    exit 0  # Exit with code 0 if files are the same
 else
     echo "The databases are different."
     exit 1  # Exit with code 1 if files are different
