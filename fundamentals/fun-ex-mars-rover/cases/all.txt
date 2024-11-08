@@ -7,7 +7,7 @@ Move 1.41421356237 meters forward
 
 Result:
 I'm at (0, 0) facing 0 degrees
-Moving 10 meters forward (instruction 1)
+Moving 10 meters backward (instruction 1)
 I'm at (0, -10) facing 0 degrees
 Turning 45 degrees counterclockwise (instruction 2)
 I'm at (0, -10) facing 315 degrees
