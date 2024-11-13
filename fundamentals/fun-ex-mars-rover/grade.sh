@@ -1,0 +1,1 @@
+python3 grade.py $1
