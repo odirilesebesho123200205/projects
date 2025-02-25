@@ -8,7 +8,7 @@ path_to_submission = os.path.normpath(sys.argv[1]) + "/"
 def run_student_submission(dataset):
     process = subprocess.Popen(
         ["python3", "analyze.py",
-            f"datasets/connections_on_{dataset}.csv", "-o", f"analysis-{dataset}/"],
+            f"datasets/{dataset}.csv", "-o", f"analysis-{dataset}/"],
         cwd=path_to_submission,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
@@ -22,7 +22,7 @@ def grade_analysis(analysis, dataset):
         with open(path_to_submission + f"analysis-{dataset}/{analysis}", "r") as file:
             theirs = file.read()
     except FileNotFoundError:
-        print(f"{dataset}/{analysis} was not created.")
+        print(f"Your {analysis} was not created.")
         return False
     # open ours
     with open(f"analysis-{dataset}/{analysis}", "r") as file:
@@ -30,16 +30,15 @@ def grade_analysis(analysis, dataset):
 
     if theirs != ours:
         print(
-            f"{dataset}/{analysis} was created, but it's not quite correct. Keep thinking!")
+            f"{analysis} was created, but it's not quite correct. Keep thinking!")
         return False
 
-    print(f"{dataset}/{analysis} was created correctly.")
+    print(f"{analysis} was created correctly.")
     return True
 
 
 datasets = [
-    "bookface",
-    "z"
+    "simpler",
 ]
 analyses = [
     "connections.svg",
