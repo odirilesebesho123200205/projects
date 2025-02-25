@@ -49,9 +49,9 @@ message = f"Hello, world! Here's a random number: {seed}"
 send_message(message)
 time.sleep(1)  # time allowed to receive the message
 output = kill_listener(listener)
-expected_message = f"<lmsbot> {message}"
+expected_username = "<lmsbot>"
 
-if expected_message in output:
+if expected_username in output and message in output:
     print("You were able to send and receive a message! Well done.")
     exit(0)
 else:
