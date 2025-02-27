@@ -20,13 +20,14 @@ def run_student_submission(dice, faces, rolls, weights, bins):
     process.wait()
 
     stdout = process.stdout.read().decode("utf-8")
+    stderr = process.stderr.read().decode("utf-8")
 
-    return stdout, process.returncode
+    return stdout, stderr, process.returncode
 
 
 correct = True
 
-output, returncode = run_student_submission(
+output, stderr, returncode = run_student_submission(
     dice="2",
     faces="6",
     rolls="1000",
@@ -36,7 +37,7 @@ output, returncode = run_student_submission(
 
 if returncode != 0:
     print("Your program crashed with the following error:")
-    print(output)
+    print(stderr)
     exit(1)
 
 if "mean" not in output.lower():
