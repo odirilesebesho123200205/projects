@@ -1,4 +1,4 @@
-package wethinkcode.person.v1;
+package za.co.wethinkcode.person;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
