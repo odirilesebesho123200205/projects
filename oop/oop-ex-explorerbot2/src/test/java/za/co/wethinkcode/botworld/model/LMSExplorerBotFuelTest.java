@@ -1,12 +1,12 @@
 package za.co.wethinkcode.botworld.model;
 
-import org.hamcrest.Matcher;
-import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.lessThan;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.hamcrest.Matcher;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
+
 import static za.co.wethinkcode.botworld.model.Heading.*;
 
 // Note that we don't need to explicitly test the `setFuelPerKlik` and `getFuelPerKlik` methods:
