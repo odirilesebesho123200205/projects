@@ -78,3 +78,11 @@ You can split the move-generation task into several smaller tasks, one for each 
 - **Correctness**: Your code should produce the correct output for all test cases.
 - **Comprehension**: _Everybody_ should understand _all_ the code in the project.
 - **Quality**: We'd like to see a data model that supports the functionality well, and sensible utilization of the Python features you learned throughout the bootcamp.
+
+## How to run the tests
+
+To run the tests, you can configure your IDE to run unittest tests in the "." directory. Alternatively, you can run the tests from the command line using the following command:
+
+```bash
+python -m unittest test_chess.py
+```
