@@ -44,10 +44,10 @@ public class ExplorerBot
      */
     public void move(){
         Position newPosition = switch( heading() ){
-            case N -> position().decrementY();
-            case S -> position().incrementY();
-            case W -> position().decrementX();
-            case E -> position().incrementX();
+            case N -> position().up();
+            case S -> position().down();
+            case W -> position().left();
+            case E -> position().right();
         };
         if( worldContains( newPosition ) ) position = newPosition;
     }

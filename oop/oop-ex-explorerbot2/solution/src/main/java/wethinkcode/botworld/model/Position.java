@@ -1,22 +1,20 @@
 package wethinkcode.botworld.model;
 
-import java.util.Objects;
-
 public record Position( int x, int y )
 {
-    public Position incrementX(){
+    public Position right(){
         return new Position( x() + 1, y() );
     }
 
-    public Position decrementX(){
+    public Position left(){
         return new Position( x() - 1, y() );
     }
 
-    public Position incrementY(){
+    public Position down(){
         return new Position( x(), y() + 1 );
     }
 
-    public Position decrementY(){
+    public Position up(){
         return new Position( x(), y() - 1 );
     }
 

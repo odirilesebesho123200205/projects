@@ -9,7 +9,7 @@ public class CoordTest
     @Test
     void incrementX(){
         Position p = new Position( 0, 0 );
-        Position result = p.incrementX();
+        Position result = p.right();
         assertEquals( 1, result.x() );
         assertNotEquals( p, result );
     }
@@ -17,7 +17,7 @@ public class CoordTest
     @Test
     void decrementX(){
         Position p = new Position( 0, 0 );
-        Position result = p.decrementX();
+        Position result = p.left();
         assertEquals( -1, result.x() );
         assertNotEquals( p, result );
     }
@@ -25,7 +25,7 @@ public class CoordTest
     @Test
     void incrementY(){
         Position p = new Position( 0, 0 );
-        Position result = p.incrementY();
+        Position result = p.down();
         assertEquals( 1, result.y() );
         assertNotEquals( p, result );
     }
@@ -33,7 +33,7 @@ public class CoordTest
     @Test
     void decrementY(){
         Position p = new Position( 0, 0 );
-        Position result = p.decrementY();
+        Position result = p.up();
         assertEquals( -1, result.y() );
         assertNotEquals( p, result );
     }
