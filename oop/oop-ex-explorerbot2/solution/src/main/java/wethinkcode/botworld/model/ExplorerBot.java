@@ -5,12 +5,12 @@ public class ExplorerBot
     public static final int WORLD_MAX_X = 10;
     public static final int WORLD_MAX_Y = 10;
 
-    private Coord position;
+    private Position position;
     private Heading heading = Heading.N;
 
 
     public ExplorerBot( int initialX, int initialY ){
-        position = new Coord( initialX, initialY );
+        position = new Position( initialX, initialY );
         if( ! worldContains( position ) ) throw new IllegalArgumentException();
     }
 
@@ -34,7 +34,7 @@ public class ExplorerBot
      * Answer the receiver's current position in the world.
      * @return The receiver's current position.
      */
-    Coord position(){
+    Position position(){
         return this.position;
     }
 
@@ -43,7 +43,7 @@ public class ExplorerBot
      * beyond the edges of the world.
      */
     public void move(){
-        Coord newPosition = switch( heading() ){
+        Position newPosition = switch( heading() ){
             case N -> position().decrementY();
             case S -> position().incrementY();
             case W -> position().decrementX();
@@ -52,7 +52,7 @@ public class ExplorerBot
         if( worldContains( newPosition ) ) position = newPosition;
     }
 
-    private boolean worldContains( Coord aCoord ){
+    private boolean worldContains( Position aCoord ){
         return aCoord.x() >= 0
             && aCoord.x() <= WORLD_MAX_X
             && aCoord.y() >= 0
