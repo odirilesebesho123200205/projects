@@ -1,6 +1,6 @@
 echo "Copy solution tests to submission dir"
 
-cp -rf ./src/test $1/src
+cp -rf ./grading/src/test $1/src
 
 echo "Changing to dir $1"
 cd $1
