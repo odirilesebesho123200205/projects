@@ -1,0 +1,10 @@
+# clobber student code
+
+cp ./PetstoreTests.csproj $1/PetstoreTests/PetstoreTests.csproj
+cp ./clean-restore-test.sh $1/clean-restore-test.sh
+
+# run grading
+
+cd $1
+docker-compose run grader
+docker-compose down
