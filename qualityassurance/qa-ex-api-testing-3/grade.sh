@@ -1,5 +1,4 @@
 # clobber student code
-# clobber student code
 
 # check if PetstoreTests directory exists
 checkdir="$1/PetStoreTests"
