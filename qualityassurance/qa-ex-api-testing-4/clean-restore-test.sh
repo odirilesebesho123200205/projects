@@ -6,7 +6,7 @@ cd $(dirname $0)
 
 # horrible hack because student projects do not have an ENV var for the petstore uri
 # and swaggerapi/petstore (name 'petstore' in docker-compose.yml) will ONLY serve on 8080
-sed -i -e "s/localhost/petstore:8080/" PetstoreTests/BaseTest.cs
+sed -i -e "s/localhost/petstore:8080/" Petstore/BaseTest.cs
 
 # do a proper clean because students sometimes check in all their build files
 rm -rf $(find . \( -name bin -o -name obj \))
