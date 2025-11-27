@@ -11,7 +11,6 @@ path_to_spam = "enron3/spam/"
 ham_emails = random.sample(os.listdir(path_to_ham), 200)
 spam_emails = random.sample(os.listdir(path_to_spam), 200)
 
-
 # Run the spam detector
 def is_spam_according_to_detector(detector, path_to_email_file):
     os.system(f"cp {path_to_email_file} email.txt")
@@ -27,7 +26,8 @@ def is_spam_according_to_detector(detector, path_to_email_file):
     elif stdout == "notspam":
         return False
     else:
-        print(f"Invalid result from spam detector: {repr({"stdout": stdout, "stderr": stderr})}\n\nI expected 'spam' or 'notspam'.")
+        std_err_out = {"stdout": stdout, "stderr": stderr}
+        print(f"Invalid result from spam detector: {repr(std_err_out)}\n\nI expected 'spam' or 'notspam'.")
         exit(2)
 
 
