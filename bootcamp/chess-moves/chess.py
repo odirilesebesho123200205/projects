@@ -30,7 +30,7 @@ pieces = [
 def main():
     """main function allows us to see code at the top of the file instead of the bottom"""
 
-    board = parse_fen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1")
+    board = parse_fen("rnbqkbnr/pppppppp/8/8/8/5N2/PPPPPPPP/RNBQKB1R b KQkq - 1 1")
 
     # print board as list
     print(board)
@@ -40,10 +40,8 @@ def main():
     display_board(board)
     print()
 
-    print(generate_moves(board))
+    print(len(generate_moves(board)))
     print()
-
-    # print(generate_moves(board))
 
 def parse_fen(fen):
     """Takes a fen string and returns the board as a list of lists with all the pieces in it"""
@@ -101,8 +99,8 @@ def knight_moves(board):
                 if board[new_row][new_column] == ".":
                     moves.append((new_row, new_column))
 
-    print(f"Knight moves: {moves}")           
-    return len(moves)
+    print(f"Knight moves: {moves}: amount {len(moves)}")           
+    return moves
 
 def king_moves(board):
     """Returns the number of legal moves a king can make"""
@@ -127,8 +125,8 @@ def king_moves(board):
                 if board[new_row][new_column] == ".":
                     moves.append((new_row, new_column))
 
-    print(f"King moves: {moves}")    
-    return len(moves)
+    print(f"King moves: {moves}: amount {len(moves)}")    
+    return moves
 
 def rook_moves(board):
     """Returns the number of legal moves a rook can make"""
@@ -148,8 +146,8 @@ def rook_moves(board):
                 new_row = new_row + direction[0]
                 new_column = new_column + direction[1]
 
-    print(f"Rook moves: {moves}")   
-    return len(moves)
+    print(f"Rook moves: {moves}: amount {len(moves)}")   
+    return moves
 
 def bishop_moves(board):
     """Returns the number of legal moves a bishop can make"""
@@ -173,8 +171,8 @@ def bishop_moves(board):
                 new_row = new_row + direction[0]
                 new_column = new_column + direction[1]
 
-    print(f"Bishop moves: {moves}")   
-    return len(moves)
+    print(f"Bishop moves: {moves}: amount {len(moves)}")   
+    return moves
 
 def queen_moves(board):
     """Returns the number of legal moves a queen can make"""
@@ -195,8 +193,8 @@ def queen_moves(board):
                 new_row = new_row + direction[0]
                 new_column = new_column + direction[1]
 
-    print(f"Queen moves: {moves}")   
-    return len(moves)
+    print(f"Queen moves: {moves}: amount {len(moves)}")   
+    return moves
 
 def pawn_moves(board):
     """Returns the number of legal moves a pawn can make"""
@@ -223,8 +221,8 @@ def pawn_moves(board):
                 pawn_moves -= 1
 
 
-    print(f"Pawn moves: {moves}")   
-    return len(moves)
+    print(f"Pawn moves: {moves}: amount {len(moves)}")   
+    return moves
 
 # ======== APPLY MOVES ========
 def apply_move(board, move):
