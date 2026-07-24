@@ -134,15 +134,68 @@ def king_moves(board):
 
 def rook_moves(board):
     """Returns the number of legal moves a rook can make"""
-    return -1
+    moves = []
+    directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+    rook_locations = get_piece_locations("R", board)
+
+    for row, column in rook_locations:
+        for direction in directions:
+
+            # use the direction in direction (row, column) to find the new location
+            new_row = row + direction[0]
+            new_column = column + direction[1]
+
+            while is_on_board(new_row, new_column, board) and board[new_row][new_column] == ".":
+                moves.append((new_row, new_column))
+                new_row = new_row + direction[0]
+                new_column = new_column + direction[1]
+
+    print(f"Rook moves: {moves}")   
+    return len(moves)
 
 def bishop_moves(board):
     """Returns the number of legal moves a bishop can make"""
-    return -1
+    moves = []
+    directions = [(1, 1), (1, -1), (-1, 1), (-1, -1)]
+    rook_locations = get_piece_locations("B", board)
+
+    # I want to keep looping in the directions until i get stopped by a piece
+    for row, column in rook_locations:
+        for direction in directions:
+
+            # use the direction in direction (row, column) to find the new location
+            new_row = row + direction[0]
+            new_column = column + direction[1]
+
+            while is_on_board(new_row, new_column, board) and board[new_row][new_column] == ".":
+                moves.append((new_row, new_column))
+                new_row = new_row + direction[0]
+                new_column = new_column + direction[1]
+
+    print(f"Bishop moves: {moves}")   
+    return len(moves)
 
 def queen_moves(board):
-    """Returns the number of legal queen"""
-    return -1
+    """Returns the number of legal moves a bishop can make"""
+    moves = []
+    directions = [(1, 1), (1, -1), (-1, 1), (-1, -1), (1, 0), (-1, 0), (0, 1), (0, -1)]
+    rook_locations = get_piece_locations("Q", board)
+
+    # I want to keep looping in the directions until i get stopped by a piece
+    for row, column in rook_locations:
+        for direction in directions:
+
+            # use the direction in direction (row, column) to find the new location
+            new_row = row + direction[0]
+            new_column = column + direction[1]
+
+            while is_on_board(new_row, new_column, board) and board[new_row][new_column] == ".":
+                moves.append((new_row, new_column))
+                new_row = new_row + direction[0]
+                new_column = new_column + direction[1]
+
+    print(f"Queen moves: {moves}")   
+    return len(moves)
 
 
 def apply_move(board, move):
