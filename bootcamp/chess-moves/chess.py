@@ -85,7 +85,7 @@ def knight_moves(board):
     directions = [(2, 1), (2, -1), (-2, 1), (-2, -1), (1, 2), (-1, 2), (1, -2), (-1, -2)]
 
     # using a get_piece_locations we find all the places there are knights
-    knight_locations = get_piece_locations("n", board)
+    knight_locations = get_piece_locations("N", board)
 
     # check the row, column coordinates from the list of peices
     for row, column in knight_locations:
