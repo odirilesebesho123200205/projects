@@ -64,7 +64,8 @@ def generate_moves(board):
          king_moves(board) +
          rook_moves(board) + 
          bishop_moves(board) +
-         queen_moves(board)
+         queen_moves(board) +
+         pawn_moves(board)
     )
 
 """
@@ -176,7 +177,7 @@ def bishop_moves(board):
     return len(moves)
 
 def queen_moves(board):
-    """Returns the number of legal moves a bishop can make"""
+    """Returns the number of legal moves a queen can make"""
     moves = []
     directions = [(1, 1), (1, -1), (-1, 1), (-1, -1), (1, 0), (-1, 0), (0, 1), (0, -1)]
     rook_locations = get_piece_locations("Q", board)
@@ -196,6 +197,36 @@ def queen_moves(board):
 
     print(f"Queen moves: {moves}")   
     return len(moves)
+
+def pawn_moves(board):
+    """Returns the number of legal moves a pawn can make"""
+
+    moves = []
+    directions = [(-1, 0)]
+    pawn_locations = get_piece_locations("P", board)
+
+    # I want to keep looping in the directions until i get stopped by a piece
+    for row, column in pawn_locations:
+        for direction in directions:
+            # use the direction in direction (row, column) to find the new location
+            new_row = row + direction[0]
+            new_column = column + direction[1]
+
+            # pawns can only move two squares so we keep moving forward until we hit a piece or 2 moves
+            pawn_moves = 2
+            while is_on_board(new_row, new_column, board) and board[new_row][new_column] == "." and pawn_moves > 0: 
+                moves.append((new_row, new_column))
+                new_row = new_row + direction[0]
+                new_column = new_column + direction[1]
+
+                # reduce the amount of moves the pawn can make
+                pawn_moves -= 1
+
+
+    print(f"Pawn moves: {moves}")   
+    return len(moves)
+
+
 
 
 def apply_move(board, move):
