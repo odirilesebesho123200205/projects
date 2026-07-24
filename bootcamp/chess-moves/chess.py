@@ -13,13 +13,14 @@ FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 
 when we take the FEN into parse_fen we get 
 pieces = [
-    [r n b q k b n r],
-    [p p p p p p p p],
-    [. . . . . . . .],
-    [. . . . . . . .],
-    [. . . . . . . .],
-    [P P P P P P P P],
-    [R N B Q K B N R],
+    [r n b q k b n r],  0   board[0][6] == piece "n"
+    [p p p p p p p p],  1   piece_locations = [(0, 1), (0, 6)]
+    [. . . . . . . .],  2
+    [. . . . . . . .],  3
+    [. . . . . . . .],  4
+    [. . . . . . . .],  5
+    [P P P P P P P P],  6
+    [R N B Q K B N R],  7
 ]
 
 "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
@@ -30,9 +31,17 @@ def main():
     """main function allows us to see code at the top of the file instead of the bottom"""
 
     board = parse_fen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1")
-    print(board) #we created a separate function which will handle everything that we are going to edit 
+
+    # print board as list
+    print(board)
+    print()
+
+    # print the board
     display_board(board)
+    print()
+
     print(generate_moves(board))
+    print()
 
     # print(generate_moves(board))
 
@@ -68,17 +77,7 @@ def generate_moves(board):
          pawn_moves(board)
     )
 
-"""
-8  [r . b q k b n r]    board[0][6] == piece "n"
-7  [p p p p p p p p]    piece_locations = [(0, 1), (0, 6)]
-6  [x . n . . x . x]
-5  [. . . . . . . .]
-4  [. . . . . . . .]    
-3  [. . . . . . . .]
-2  [P P P P P P P P]
-1  [R N B Q K B N R]
-   a b c d e f g h
-   """
+# ======== PIECES FUNCTIONS ========
 def knight_moves(board):
     """Returns number of legal moves a knight can make"""
     # stores all the positional moves were allowed to make
@@ -89,7 +88,6 @@ def knight_moves(board):
 
     # using a get_piece_locations we find all the places there are knights
     knight_locations = get_piece_locations("n", board)
-    print(knight_locations)
 
     # check the row, column coordinates from the list of peices
     for row, column in knight_locations:
@@ -132,7 +130,6 @@ def king_moves(board):
     print(f"King moves: {moves}")    
     return len(moves)
 
-
 def rook_moves(board):
     """Returns the number of legal moves a rook can make"""
     moves = []
@@ -168,8 +165,11 @@ def bishop_moves(board):
             new_row = row + direction[0]
             new_column = column + direction[1]
 
+            # Check if the new location is in the board and the new location is empty/ "."
             while is_on_board(new_row, new_column, board) and board[new_row][new_column] == ".":
-                moves.append((new_row, new_column))
+                moves.append((new_row, new_column)) # add the new location to moves list
+
+                # update the new location in the while loop until we hit a piece
                 new_row = new_row + direction[0]
                 new_column = new_column + direction[1]
 
@@ -226,45 +226,33 @@ def pawn_moves(board):
     print(f"Pawn moves: {moves}")   
     return len(moves)
 
-
-
-
+# ======== APPLY MOVES ========
 def apply_move(board, move):
-    raise NotImplementedError("This function is not implemented yet.")
+    """Returns the an updated board based on move applied"""
 
+    target_piece = move[0]
+
+    # get the row and and column for the target piece
+    piece_row = target_piece[0]
+    piece_column = target_piece[1]
+
+
+    target_square = move[1]
+    # get the row and and column for the target piece
+    piece_row = target_piece[0]
+    piece_column = target_piece[1]
+
+    # check if its a piece
+    piece_row = target_piece[0]
+    piece_column = target_piece[1]
+    # if board[]
+    pass
+
+# ======== HELPER FUNCTIONS ========
 def display_board(board):
     """Prints the chess board"""
     for row in board:
             print(" ".join(row))
-
-
-"""
-board[row][column]
-
-when i want a row what ill do is look for board[row] == board[0]
-this is going to check the first row/ the first list inside board
-
-board[row=1][column=3] == "p"
-
-board[row][column]
-board[row=0][column=4] == "k"
-
-board[row][column]
-board[row=7][column=3] == "Q"
-
-"""
-"""
-
-8  [r n b q k b n r]    board[0][6] == piece
-7  [p p p p p p p p]    piece_location = [(0, 1), (0, 6)]
-6  [x . x . . x . x]
-5  [. . . . . . . .]
-4  [. . . . . . . .]    board[3][5] [(3, 5), (0, 5)]
-3  [. . . . . . . .]
-2  [P P P P P P P P]
-1  [R N B Q K B N R]
-   a b c d e f g h
-"""
 
 def get_piece_locations(piece, board):
     """Return a list of all the locations of a piece type"""
